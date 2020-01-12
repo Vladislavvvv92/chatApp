@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chatapp</title>
+    <meta name="description" content="#">
+    <meta name="robots" content="none">
+    <meta name="keywords" content="#">
+    <link rel="stylesheet" href="dist/main.css">
+    <link rel="canonical" href="http://chat-chat.eu-4.evennode.com">
+</head>
+<body>
+
+<div class="container" id="chat">
+    <div class="container__chat chat">
+        <div class="container__modal modal" id="modal">
+            <div class="modal__nickname nickname" id="nickname">
+                <h3 class="nickname__title">Укажите ваше имя</h3>
+                <input type="text" class="nickname__input" id="nickNameInput" maxlength="255">
+                <button class="nickname__btn" id="nickNameBtn">Подтвердить</button>
+                <div class="nickmane__black-and-white set" id="black-and-white">
+                    <div class="set__black-and-white">
+                        <button class="white-theme" id="white-theme">Светлая</button>
+                        <button class="black-theme" id="black-theme">Темная</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <header class="chat__header header">
+            <h1 class="header__title">Chatapp</h1>
+            <h3 class="header__nickname-ip" id="ip-user">ваш ip: 123.123.123.123</h3>
+
+            <div class="header__setting setting">
+                <img class="setting__img" src="../img/setting.png" alt="setting" id="setting">
+            </div>
+
+            <div class="header__users users" id="users">
+                <span class="users__number" id="usersLength"></span>
+                <div class="users__modal modal" id="online">
+                    <ul class="modal__ul ul" id="table">
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+
+        <main class="chat__chat main">
+            <div class="main__message messages">
+                <div class="message__history" id="messages">
+
+                </div>
+            </div>
+            <div class="main__arrow arrow" id="arrowBot" hidden>
+                <div class="arrow__down"></div>
+            </div>
+        </main>
+
+
+        <footer class="chat__footer footer">
+            <form class="footer__form form" id="form" action="">
+                <input class="form__input" type="text" id="input" maxlength="5000">
+                <div class="form__smiles smiles">
+                    <img class="smiles__btn" src="../img/smiles.png" alt="smiles" id="smiles">
+                    <div class="smiles__all-smiles all-smiles" id="allSmiles">
+                        <img src="../img/smiles/smile.png" alt="" class="all-smiles__smile" id="smile">
+                        <img src="../img/smiles/fun-two.png" alt="" class="all-smiles__smile" id="funTwo">
+                        <img src="../img/smiles/fun.png" alt="" class="all-smiles__smile" id="fun">
+                        <img src="../img/smiles/kiss.png" alt="" class="all-smiles__smile" id="kiss">
+                        <img src="../img/smiles/cool.png" alt="" class="all-smiles__smile" id="cool">
+                        <img src="../img/smiles/lovely.png" alt="" class="all-smiles__smile" id="lovely">
+                        <img src="../img/smiles/idit.png" alt="" class="all-smiles__smile" id="idit">
+                        <img src="../img/smiles/fun-devil.png" alt="" class="all-smiles__smile" id="funDevil">
+                        <img src="../img/smiles/sand-devil.png" alt="" class="all-smiles__smile" id="sadDevil">
+                        <img src="../img/smiles/trem.png" alt="" class="all-smiles__smile" id="trem">
+                        <img src="../img/smiles/clown.png" alt="" class="all-smiles__smile" id="clown">
+                    </div>
+                </div>
+
+                <button class="form__btn" id="send">Отправить</button>
+            </form>
+        </footer>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://ip-jobs.staff-base.spb.ru/ip.cgi"></script>
+<script src="dist/build.js"></script>
+</body>
+</html>

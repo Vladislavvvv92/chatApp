@@ -1,0 +1,123 @@
+@import "variables";
+
+.user-msg {
+  position: relative;
+  min-height: max-content;
+  padding: 10px;
+  margin: 2px 10px 2px auto;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  align-items: flex-end;
+  color: @msgColor;
+
+  &__msg {
+    background: @userMsgBg;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  &--black {
+    :after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-bottom: 15px solid @userMsgBg;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      top: 27px;
+      right: -2px;
+    }
+
+  }
+  &--white {
+    :after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-bottom: 15px solid #00a8ec;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      top: 27px;
+      right: -2px;
+    }
+  }
+}
+
+.other-msg {
+  position: relative;
+  min-height: max-content;
+  padding: 10px;
+  margin: 0 auto 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: #ffffff;
+  &__msg {
+    background: #6E6E6E;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  &--black {
+    :after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 15px solid #6E6E6E;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      top: 38px;
+      left: -2px;
+    }
+  }
+  &--white {
+    :after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 15px solid #cecece;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      top: 38px;
+      left: -2px;
+    }
+  }
+}
+
+.other-msg__msg-white-theme {
+  color: #000000;
+  background: #cecece;
+}
+
+.user-msg__msg-white-theme {
+  color: @msgColor;
+  background: #00a8ec;
+}
+
+.nickname {
+  color: @nickNameColor;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+.nickname-white-theme {
+  color: #6cc04a;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+.time {
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}
+
+.time-white-theme{
+   font-size: 12px;
+   display: flex;
+   justify-content: center;
+   margin: 5px 0 0 0;
+   color: #392177;
+ }

@@ -1,0 +1,39 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "The Keiv-Baku progect",
+  "main": "init.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "build": "webpack",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gavrilov_alex@bitbucket.org/gavrilov_alex/chatapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/gavrilov_alex/chatapp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "vue-style-loader": "^4.1.2",
+    "ws": "^7.2.1"
+  },
+  "devDependencies": {
+    "css-loader": "^3.4.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "mocha-loader": "^4.0.0",
+    "style-loader": "^1.1.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10"
+  }
+}

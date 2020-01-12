@@ -1,0 +1,139 @@
+@import "variables";
+
+.modal{
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(38, 43, 49, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  .nickname{
+     width: 350px;
+     height: 350px;
+     background: @dark;
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     padding: 20px;
+     &__title{
+       font-size: 25px;
+       margin: 80px 0 20px 0;
+     }
+     &__input{
+       color: @msgColor;
+       font-size: 25px;
+       padding: 5px;
+       background: @chatBg;
+       border: none;
+       outline: none;
+       height: 40px;
+     }
+     &__btn{
+       width: 100px;
+       height: 40px;
+       margin: 20px auto;
+       background: @chatBg;
+       color: @msgColor;
+       border: none;
+       outline: none;
+       &:hover{
+         cursor: pointer;
+         color: @userMsgBg;
+       }
+     }
+     .set__black-and-white{
+       display: flex;
+       justify-content: center;
+     }
+     .white-theme{
+       width: 65px;
+       height: 20px;
+       background: aliceblue;
+       cursor: pointer;
+       color: #FF5700;
+       font-weight: 600;
+       border: 2px solid #FF5700;
+       border-radius: 5px;
+
+     }
+     .black-theme{
+       width: 70px;
+       height: 20px;
+       background: #262B31;
+       cursor: pointer;
+       color: #57bb59;
+       font-weight: 600;
+       margin-left: 3%;
+       border: 2px solid #FF5700;
+       border-radius: 5px;
+     }
+
+   }
+  .nickname-white-theme{
+    width: 350px;
+    height: 350px;
+    background: #eaebeb;
+    background: linear-gradient(90deg,#eaebeb 0%, #cedee0 80%);
+    background: -webkit-linear-gradient(90deg,#eaebeb 0%, #cedee0 80%);
+    background: -moz-linear-gradient(90deg,#eaebeb 0%, #cedee0 80%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    .title-white-theme{
+      color: #FF5700;
+      font-size: 25px;
+      margin: 80px 0 20px 0;
+    }
+    .input-white-theme{
+      color: #FF5700;
+      font-size: 25px;
+      padding: 5px;
+      background: #5d5a5a1f;
+      border: none;
+      outline: none;
+      height: 40px;
+    }
+    .btn-white-theme{
+      width: 100px;
+      height: 40px;
+      margin: 20px auto;
+      background: @nickNameColor;
+      color: @msgColor;
+      border: none;
+      outline: none;
+      &:hover{
+        cursor: pointer;
+        color: @userMsgBg;
+      }
+    }
+    .set__black-and-white{
+      display: flex;
+      justify-content: center;
+    }
+    .white-theme{
+      width: 65px;
+      height: 20px;
+      background: aliceblue;
+      cursor: pointer;
+      color: #FF5700;
+      font-weight: 600;
+    }
+    .black-theme{
+      width: 70px;
+      height: 20px;
+      background: #262B31;
+      cursor: pointer;
+      color: #57bb59;
+      font-weight: 600;
+      margin-left: 3%;
+    }
+
+  }
+  &--active{
+    display: flex;
+
+  }
+}
