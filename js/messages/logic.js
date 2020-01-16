@@ -40,7 +40,7 @@ export const printMessage = (value, divType, person, date) => {
                 let afterSubStr = value.substring(i, value.length);
                 value = `${beforeSubStr}<br/>${afterSubStr}`;
             } else if (i % 40 === 0 && value[i] !== ' ') {
-                for ( let j = i; j < value.length; j++) {
+                for (let j = i; j < value.length; j++) {
                     if (value[j] === ' ') {
                         let beforeSubStr = value.substring(0, j);
                         let afterSubStr = value.substring(j, value.length);
@@ -99,36 +99,61 @@ export const printMessage = (value, divType, person, date) => {
 };
 
 export const sendMessageToDB = (nickName, IP, text, date) => {
-    messagesModel.xhr.open('PUT', '/putMessage', true);
-    messagesModel.xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    messagesModel.xhr.send(JSON.stringify({
-        nickName: nickName,
-        IP: IP,
-        text: text,
-        date: date,
-        deviceId: localStorage.getItem('deviceID')
-    }));
-    messagesModel.xhr.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(messagesModel.xhr.response)
-        }
-    };
+    let promise = new Promise(((resolve, reject) => {
+        messagesModel.xhr.open('PUT', '/putMessage', true);
+        messagesModel.xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        messagesModel.xhr.send(JSON.stringify({
+            nickName: nickName,
+            IP: IP,
+            text: text,
+            date: date,
+            deviceId: localStorage.getItem('deviceID')
+        }));
+        messagesModel.xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                //console.log(messagesModel.xhr.response)
+                resolve(messagesModel.xhr.response)
+                reject('Error')
+            }
+        };
+    }))
+    promise.then((data) => {
+        console.log(data)
+    })
 };
 
 export const getMessageFromDB = () => {
-    messagesModel.xhr.open('GET', '/getMessages', true);
-    messagesModel.xhr.send();
-    messagesModel.xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(JSON.parse(messagesModel.xhr.response));
-            const messages = JSON.parse(messagesModel.xhr.response).messages;
-            messages.forEach(function (item) {
-                if (item.deviceId === localStorage.getItem('deviceID')) {
-                    printMessage(item.text, 'user-msg', item, item.date)
-                } else {
-                    printMessage(item.text, 'other-msg', item, item.date)
-                }
+    let promise = new Promise(((resolve, reject) => {
+        return new Promise((resolve, reject) => {
+            messagesModel.xhr.open('GET', '/getMessages', true);
+            resolve()
+            reject(()=>{
+                console.log('Err')
             })
-        }
-    };
+        })
+            .then(() => {
+                messagesModel.xhr.send();
+                console.log("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
+                resolve();
+            })
+            .then(() => {
+                messagesModel.xhr.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        console.log(JSON.parse(messagesModel.xhr.response));
+                        const messages = JSON.parse(messagesModel.xhr.response).messages;
+                        messages.forEach(function (item) {
+                            if (item.deviceId === localStorage.getItem('deviceID')) {
+                                printMessage(item.text, 'user-msg', item, item.date)
+                            } else {
+                                printMessage(item.text, 'other-msg', item, item.date)
+                            }
+                        })
+                    }
+                };
+            })
+
+    }))
+    promise.then(() => {
+        console.log('Download messages Done!')
+    })
 };

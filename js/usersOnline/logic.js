@@ -1,36 +1,62 @@
 import {usersOnlineModel} from "./model";
 
 export const setUsersLength = () => {
-    usersOnlineModel.xhr.open('GET', '/getUsersLength', true);
-    usersOnlineModel.xhr.send();
-    usersOnlineModel.xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementById('usersLength').innerHTML = JSON.parse(usersOnlineModel.xhr.response).res;
-            printOnlineUsers(JSON.parse(usersOnlineModel.xhr.response).usersList)
-        }
-    };
+    let promise = new Promise((resolve, reject) => {
+        return new Promise(() => {
+            usersOnlineModel.xhr.open('GET', '/getUsersLength', true);
+            resolve();
+            reject(() => {
+                console.log('Err')
+            })
+        })
+            .then(() => {
+                usersOnlineModel.xhr.send();
+                resolve();
+                reject(() => {
+                    console.log('Err')
+                })
+            })
+            .then(() => {
+                usersOnlineModel.xhr.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById('usersLength').innerHTML = JSON.parse(usersOnlineModel.xhr.response).res;
+                        printOnlineUsers(JSON.parse(usersOnlineModel.xhr.response).usersList)
+                    }
+                };
+            })
+    })
+
+
 };
 
 export const setUserOnline = (person) => {
-    if (!sessionStorage.getItem("session")) {
-        console.log(localStorage.getItem('deviceID'));
-        usersOnlineModel.xhr.open('PUT', '/userOn', true);
-        usersOnlineModel.xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        usersOnlineModel.xhr.send(JSON.stringify({
-            nickName : person.getNickName() ? person.getNickName() : null,
-            IP: person.getIP(),
-            DID: localStorage.getItem('deviceID'),
-        }));
-        sessionStorage.setItem('session', 'true')
-    }
-    setTimeout(() =>  setUsersLength(), 1000);
+    let promise = new Promise(((resolve, reject) => {
+        return new Promise(((resolve1, reject1) => {
+            if (!sessionStorage.getItem("session")) {
+                console.log(localStorage.getItem('deviceID'));
+                usersOnlineModel.xhr.open('PUT', '/userOn', true);
+                usersOnlineModel.xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                usersOnlineModel.xhr.send(JSON.stringify({
+                    nickName: person.getNickName() ? person.getNickName() : null,
+                    IP: person.getIP(),
+                    DID: localStorage.getItem('deviceID'),
+                }));
+                sessionStorage.setItem('session', 'true')
+            }
+        }))
+            .then(()=>{
+                setUsersLength()
+            })
+        //setTimeout(() => , 1000);
+    }))
+
 };
 
 export const setUserOffline = (person) => {
     usersOnlineModel.xhr.open('PUT', '/userOff', true);
     usersOnlineModel.xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     usersOnlineModel.xhr.send(JSON.stringify({
-        nickName : person.getNickName() ? person.getNickName() : null,
+        nickName: person.getNickName() ? person.getNickName() : null,
         IP: person.getIP(),
         DID: localStorage.getItem('deviceID'),
     }));

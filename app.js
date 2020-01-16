@@ -49,7 +49,7 @@ app.post('/setNick', urlencodedParserjs, (req, res) => {
 });
 
 app.put('/putMessage', urlencodedParserjs, (req, res) => {
-    db.putMessage(req.body);
+     db.putMessage(req.body);
 });
 
 app.get('/getMessages', urlencodedParserjs, (req, res) => {

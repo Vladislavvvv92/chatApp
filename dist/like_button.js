@@ -1,3 +1,10 @@
+
+const e = React.createElement;
+
+ReactDOM.render(e(<h1>TES</h1>), document.getElementById('root'));
+
+
+/*
 'use strict';
 
 const e = React.createElement;
@@ -22,4 +29,4 @@ class LikeButton extends React.Component {
 }
 
 const domContainer = document.querySelector('#root');
-ReactDOM.render(e(LikeButton), domContainer);
+ReactDOM.render(e(LikeButton), domContainer);*/
