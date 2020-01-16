@@ -13,6 +13,7 @@
     <link rel="canonical" href="http://chat-chat.eu-4.evennode.com">
 </head>
 <body>
+<div id="root"></div>
 
 <div class="container" id="chat">
     <div class="container__chat chat">
@@ -88,5 +89,12 @@
 
 <script type="text/javascript" src="http://ip-jobs.staff-base.spb.ru/ip.cgi"></script>
 <script src="dist/build.js"></script>
+<!-- Загрузим React. -->
+<!-- Примечание: для деплоя на продакшен замените окончание «development.js» на «production.min.js». -->
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Загрузим наш React-компонент. -->
+<script src="like_button.js"></script>
 </body>
 </html>
